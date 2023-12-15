@@ -1164,11 +1164,11 @@ static struct msi_ec_conf CONF14 __initdata = {
 	},
 	.webcam = {
 		.address       = 0x2e,
-		.block_address = 0x2f,
+		.block_address = MSI_EC_ADDR_UNSUPP,
 		.bit           = 1,
 	},
 	.fn_win_swap = {
-		.address = 0xbf,
+		.address = 0xbf, // needs testing
 		.bit     = 4,
 	},
 	.cooler_boost = {
@@ -1181,42 +1181,43 @@ static struct msi_ec_conf CONF14 __initdata = {
 			{ SM_ECO_NAME,     0xc2 },
 			{ SM_COMFORT_NAME, 0xc1 },
 			{ SM_SPORT_NAME,   0xc0 },
+			{ SM_TURBO_NAME,   0xc4 },
 			MSI_EC_MODE_NULL
 		},
 	},
 	.super_battery = {
-		.address = MSI_EC_ADDR_UNKNOWN, // 0xd5 needs testing
+		.address = MSI_EC_ADDR_UNKNOWN, // 0xd5 but has its own wet of modes
+		.mask    = 0x0f,
 	},
 	.fan_mode = {
 		.address = 0xf4,
 		.modes = {
-			{ FM_AUTO_NAME,     0x0d },
+			{ FM_AUTO_NAME,     0x0d }, // d may not be relevant
 			{ FM_SILENT_NAME,   0x1d },
-			{ FM_BASIC_NAME,    0x4d },
 			{ FM_ADVANCED_NAME, 0x8d },
 			MSI_EC_MODE_NULL
 		},
 	},
 	.cpu = {
 		.rt_temp_address       = 0x68,
-		.rt_fan_speed_address  = 0x71,
+		.rt_fan_speed_address  = 0xc9, // needs testing
 		.rt_fan_speed_base_min = 0x19,
 		.rt_fan_speed_base_max = 0x37,
-		.bs_fan_speed_address  = 0x89,
+		.bs_fan_speed_address  = MSI_EC_ADDR_UNSUPP,
 		.bs_fan_speed_base_min = 0x00,
 		.bs_fan_speed_base_max = 0x0f,
 	},
 	.gpu = {
-		.rt_temp_address      = 0x80,
-		.rt_fan_speed_address = 0x89,
+		.rt_temp_address      = MSI_EC_ADDR_UNKNOWN,
+		.rt_fan_speed_address = MSI_EC_ADDR_UNKNOWN,
 	},
 	.leds = {
-		.micmute_led_address = 0x2b,
+		.micmute_led_address = MSI_EC_ADDR_UNSUPP,
 		.mute_led_address    = 0x2c,
 		.bit                 = 2,
 	},
 	.kbd_bl = {
-		.bl_mode_address  = 0x2c, // ?
+		.bl_mode_address  = MSI_EC_ADDR_UNKNOWN, // ?
 		.bl_modes         = { 0x00, 0x08 }, // ?
 		.max_mode         = 1, // ?
 		.bl_state_address = 0xf3,
