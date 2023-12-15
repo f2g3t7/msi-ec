@@ -235,6 +235,7 @@ Set this parameter to a supported EC firmware version to use its configuration a
 - GS66 Stealth 11UE (16V4EMS1)
 - Alpha 15 B5EE / B5EEK (158LEMS1)
 - GP66 Leopard 10UG / 10UE / 10UH (1542EMS1)
+- GP76 Leopard 11UG (
 - Bravo 17 A4DDR / A4DDK (17FKEMS1)
 - Summit E14 Evo A12M (14F1EMS1)
 - Modern 14 C5M (14JKEMS1)
